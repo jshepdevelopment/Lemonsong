@@ -1,10 +1,11 @@
 /*
 * Happy Time Lemon Song
-* Copyright 2014
+* Copyright 2015
 * Original Gamester
 * 
 */
 
+/* Level one is the only level. It is a multi-environment tiled map. */
 var levelOne = function(game) {  };  // State object created, a function accepting a game Object as parameter
 
 var map;
@@ -104,7 +105,7 @@ levelOne.prototype = {
         //  And now we convert all of the Tiled objects with an ID of 907 into sprites within the maplemons group
         map.createFromObjects('objectlayer', 907, 'lemon', 0, true, false, lemons);
         
-        //  Add animations to all of the coin sprites
+        //  Add animations to all of the star sprites
         lemons.callAll('animations.add', 'animations', 'spin', [0, 1, 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11], 10, true);
         lemons.callAll('animations.play', 'animations', 'spin');
     
