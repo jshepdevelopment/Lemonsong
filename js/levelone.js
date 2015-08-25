@@ -36,7 +36,7 @@ levelOne.prototype = {
 
     preload: function () {
 
-        this.game.load.tilemap('levelone', 'assets/levelone.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap('levelone', 'assets/gamemap.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('tiles01', 'assets/tiles01.png');
         this.game.load.image('background', 'assets/sky.png');
         this.game.load.image('textbubble', 'assets/textbubble.png');
