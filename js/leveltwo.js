@@ -1,12 +1,12 @@
 /*
 * Happy Time Lemon Song
 * Copyright 2015
-* Original Gamester
+* Jarod Stone */
 * 
 */
 
-/* Level one is the only level. It is a multi-environment tiled map. */
-var levelOne = function(game) {  };  // State object created, a function accepting a game Object as parameter
+/* Level two is the only level. It is a multi-environment tiled map. */
+var levelTwo = function(game) {  };  // State object created, a function accepting a game Object as parameter
 
 var map;
 var tileset;
@@ -32,11 +32,11 @@ var bobSpeaking = 0;
 //var nextLevel;
 
 
-levelOne.prototype = {
+levelTwo.prototype = {
 
     preload: function () {
 
-	    this.game.load.tilemap('levelone', 'assets/levelone.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap('leveltwo', 'assets/leveltwo.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('tiles01', 'assets/tiles01.png');
         this.game.load.image('background', 'assets/sky.png');
         this.game.load.image('textbubble', 'assets/textbubble.png');
@@ -54,8 +54,7 @@ levelOne.prototype = {
 
         this.game.load.spritesheet('player', 'assets/player.png', 32, 32);
         this.game.load.spritesheet('bob', 'assets/bob.png', 32, 32);
-        this.game.load.spritesheet('george', 'assets/george.png', 32, 32);   
-
+        this.game.load.spritesheet('george', 'assets/george.png', 32, 32);        
 
     },
 
@@ -77,7 +76,7 @@ levelOne.prototype = {
         //bg1.fixedToCamera = false;
 
         //Adding tilemap stuff
-        map = this.game.add.tilemap('levelone');
+        map = this.game.add.tilemap('leveltwo');
         map.addTilesetImage('tiles01');
 
         map.setCollision([0,1, 2, 3, 4], true, layer);
@@ -114,14 +113,6 @@ levelOne.prototype = {
         // Convert all of the Tiled objects with an ID of 908 into sprites within the rottenlems
         map.createFromObjects('objectlayer', 908, 'rottenlemon', 0, true, false, rottenlemon);
 
-		// Add nextLevelObject from map
-        nextLevelObject = this.game.add.group();
-        rottenlemon.enableBody = true;
-
-        // nextLevelOjbect
-        map.createFromObjects('objectlayer', 9, null, 0, true, false, nextLevelObject);
-		
-		
         // Add Bob from bob
         bob = this.game.add.sprite(32, 32, 'bob');
         bob.enableBody = true;
@@ -214,8 +205,6 @@ levelOne.prototype = {
         this.game.physics.arcade.overlap(player, bob, bobAction, null, this);
 
         this.game.physics.arcade.overlap(player, rottenlemon, collectRottenLemon, null, this);
-        this.game.physics.arcade.overlap(player, nextLevelObject, nextLevelStart, null, this);
-
 
 
 
@@ -335,7 +324,6 @@ function resetPlayerPos() {
 }
 
 
-function nextLevelStart(player, tile) {
-	resetPlayer();
-    this.game.state.start('levelTwoState');
+function levelExitPlayer(player, tile) {
+    this.game.state.start('levelThreeState');
 }

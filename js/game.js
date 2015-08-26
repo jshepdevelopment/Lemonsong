@@ -9,8 +9,8 @@ window.onload = function() {
 
     var game = new Phaser.Game(800, 600, Phaser.AUTO, 'wrapper', { });
 
-    game.state.add('levelOneState', levelOne);
-    //game.state.add('levelTwoState', levelTwo);
+	game.state.add('levelOneState', levelOne);
+    game.state.add('levelTwoState', levelTwo);
 
     game.state.start('levelOneState');
 
@@ -34,3 +34,8 @@ function collidePlatform(player, platform){
     //player_doublejump = true;
 }
 
+function updateScore() {
+
+    score++;
+
+}
